@@ -1,8 +1,8 @@
 class Celda:
 
-    def __init__(self,valor,pieza, fila, columna):
-        self.valor = valor
-        self.pieza = pieza
+    def __init__(self,valorCelda, fila, columna):
+        self.valorCelda = valorCelda
+        self.pieza = []
         self.fila = fila
         self.columna = columna
 
@@ -16,10 +16,27 @@ class Celda:
         return self.pieza
 
     def colocarPieza(self,pieza):
-        self.pieza = pieza
+        self.pieza.append(pieza)
 
     def obtenerValorCelda(self):
-        return self.valor
+        return self.valorCelda
+
+    def numeroPiezas(self, color):
+        contador = 0
+
+        for pieza in self.pieza:
+            if pieza.color is color:
+                contador +=1
+
+        return contador
+
+    def estaVacia(self):
+        if len(self.pieza) == 0:
+            return True
+        else:
+            return False
+
+    
 
 import unittest
 from Celda import Celda  # Asegúrate de importar la clase Celda desde tu archivo
